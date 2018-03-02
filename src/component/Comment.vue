@@ -1,13 +1,12 @@
 <template>
   <div>
-评论板块
+    <el-aside>aside</el-aside>
+    <el-main>main</el-main>
   </div>
 </template>
 
 <script>
-  export default {
-    
-  }
+export default {};
 </script>
 
 <style scoped>

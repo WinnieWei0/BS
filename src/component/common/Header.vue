@@ -9,8 +9,8 @@
       <el-col :span="12">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
           <el-menu-item index="0"><router-link :to="{path:'/'}">首页</router-link></el-menu-item>
-          <el-menu-item index="1"><router-link :to="{path:'/message'}">留言中心</router-link></el-menu-item>
-          <el-menu-item index="2"><router-link :to="{path:'/comment'}">评论中心</router-link></el-menu-item>
+          <el-menu-item index="1"><router-link :to="{path:'/message'}">我的粉丝</router-link></el-menu-item>
+          <el-menu-item index="2"><router-link :to="{path:'/comment'}">我的关注</router-link></el-menu-item>
         </el-menu>
       </el-col>
       <el-col :span="6">

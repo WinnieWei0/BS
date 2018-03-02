@@ -12,3 +12,6 @@ img{
   visibility: hidden;
   clear: both;
 }
+a{
+  text-decoration: none;
+}
