@@ -7,10 +7,11 @@
         </div>
       </el-col>
       <el-col :span="12">
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
           <el-menu-item index="0"><router-link :to="{path:'/'}">首页</router-link></el-menu-item>
-          <el-menu-item index="1"><router-link :to="{path:'/message'}">我的粉丝</router-link></el-menu-item>
-          <el-menu-item index="2"><router-link :to="{path:'/comment'}">我的关注</router-link></el-menu-item>
+          <el-menu-item index="1"><router-link :to="{path:'/add'}">上传作品</router-link></el-menu-item>
+          <el-menu-item index="2"><router-link :to="{path:'/message'}">我的粉丝</router-link></el-menu-item>
+          <el-menu-item index="3"><router-link :to="{path:'/comment'}">我的关注</router-link></el-menu-item>
         </el-menu>
       </el-col>
       <el-col :span="6">
@@ -24,7 +25,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return {
+      activeIndex:'0'
+    }
+  }
+};
 </script>
 
 <style scoped lang='less'>
