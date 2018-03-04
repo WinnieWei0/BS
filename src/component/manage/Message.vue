@@ -1,6 +1,6 @@
 <template>
     <div>
-管理中心
+留言管理
     </div>
 </template>
 
