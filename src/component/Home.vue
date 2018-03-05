@@ -87,7 +87,7 @@
     </el-aside>
     <el-main>
       <el-carousel trigger="click" height="250px">
-      <el-carousel-item v-for="item in swipperList" :key="item">
+      <el-carousel-item v-for="item in swipperList" :key="item.index">
         <img :src="item.src" :alt="item.alt">
         <!-- <img src="../assets/images/swipper1.jpg" alt=""> -->
       </el-carousel-item>
