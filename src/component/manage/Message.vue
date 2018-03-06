@@ -2,41 +2,46 @@
 	<div>
 		<el-tabs type="border-card">
 			<el-tab-pane label="我的留言">
-				<div class="myItem">
+				<div class="myItem get">
 					<div class="myMsg">
 						<div class="myText">这是我的留言</div>
 						<div class="myTime">2017-02-01</div>
-					</div>
-					<div class="from">
-						<div class="fromName">老吴</div>
-						<el-button type="text">回复</el-button>
 					</div>
 				</div>
-				<div class="myItem">
+				<div class="myItem get">
 					<div class="myMsg">
 						<div class="myText">这是我的留言</div>
 						<div class="myTime">2017-02-01</div>
-					</div>
-					<div class="from">
-						<div class="fromName">老吴</div>
-						<el-button type="text">回复</el-button>
-					</div>
-					<div class="reply">
-						<el-input v-model="input" placeholder="请输入内容"></el-input>
 					</div>
 				</div>
 			</el-tab-pane>
 			<el-tab-pane label="给我的留言">
-				<div class="myItem get">
+				<div class="myItem">
 					<div class="myMsg">
 						<div class="myText">这是给我的留言</div>
 						<div class="myTime">2017-02-01</div>
 					</div>
+					<div class="from">
+						<div class="fromName">老吴</div>
+						<el-button type="text" @click="showReply=true">回复</el-button>
+					</div>
+					<div class="reply" v-if="showReply">
+						<el-input v-model="input" type="textarea" autosize placeholder="回复："></el-input>
+						<el-button type="primary" class="commitComment" @click="commitComment">确定</el-button>
+					</div>
 				</div>
-				<div class="myItem get">
+				<div class="myItem">
 					<div class="myMsg">
 						<div class="myText">这是给我的留言</div>
 						<div class="myTime">2017-02-01</div>
+					</div>
+					<div class="from">
+						<div class="fromName">老吴</div>
+						<el-button type="text" @click="showReply=true">回复</el-button>
+					</div>
+					<div class="reply" v-if="showReply">
+						<el-input v-model="input" type="textarea" autosize placeholder="回复："></el-input>
+						<el-button type="primary" class="commitComment" @click="commitComment">确定</el-button>
 					</div>
 				</div>
 			</el-tab-pane>
@@ -45,9 +50,19 @@
 </template>
 
 <script>
-    export default {
-        
-    }
+	export default {
+		data(){
+			return {
+				showReply:false,
+				input : ''
+			}
+		},
+		methods:{
+			commitComment(){
+				this.showReply=false
+			}
+		}
+	}
 </script>
 
 <style scoped lang='less'>
@@ -82,5 +97,14 @@
 }
 .get{
   padding-bottom: 10px;
+}
+.reply{
+	padding-bottom: 10px;
+	clear: both;
+	overflow: hidden;
+}
+.commitComment{
+	float: right;
+	margin-top: 10px;
 }
 </style>
