@@ -7,7 +7,8 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "server":"json-server db.json"
   },
   "dependencies": {
     "element-ui": "^2.1.0",
@@ -31,6 +32,7 @@
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",
+    "json-server": "^0.12.1",
     "less-loader": "^4.0.5",
     "style-loader": "^0.20.2",
     "vue-loader": "^13.0.5",
