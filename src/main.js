@@ -7,6 +7,10 @@ import './assets/css/base.css'
 import VueRouter from "vue-router"
 Vue.use(VueRouter)
 import router from './router'
+import axios from 'axios'
+// 跨域
+axios.defaults.withCredentials=true
+Vue.prototype.$axios = axios;
 
 new Vue({
   el: '#app',

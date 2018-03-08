@@ -47,25 +47,28 @@
       {"content":"好好嘿1","create":"2017-01-02","id":4}
     ]
   },
-  "goodAuther":[
-    {"name":"作者1","src":"/src/assets/images/logo.png","id":0},
-    {"name":"作者2","src":"/src/assets/images/logo.png","id":1},
-    {"name":"作者3","src":"/src/assets/images/logo.png","id":2},
-    {"name":"作者4","src":"/src/assets/images/logo.png","id":3},
-    {"name":"作者5","src":"/src/assets/images/logo.png","id":4}
-  ],
-  "goodWork":[
-    {"name":"贪吃蛇1","auth":"作者1","detail":"这是一款贪吃蛇游戏1","src":"/src/assets/images/logo.png","id":0},
-    {"name":"贪吃蛇2","auth":"作者2","detail":"这是一款贪吃蛇游戏2","src":"/src/assets/images/logo.png","id":1},
-    {"name":"贪吃蛇3","auth":"作者3","detail":"这是一款贪吃蛇游戏3","src":"/src/assets/images/logo.png","id":2},
-    {"name":"贪吃蛇4","auth":"作者4","detail":"这是一款贪吃蛇游戏4","src":"/src/assets/images/logo.png","id":3},
-    {"name":"贪吃蛇5","auth":"作者5","detail":"这是一款贪吃蛇游戏5","src":"/src/assets/images/logo.png","id":4}
-  ],
-  "newWork":[
-    {"name":"贪吃蛇1","auth":"作者1","create":"2017-01-11","src":"/src/assets/images/logo.png","id":0},
-    {"name":"贪吃蛇2","auth":"作者2","create":"2017-01-12","src":"/src/assets/images/logo.png","id":1},
-    {"name":"贪吃蛇3","auth":"作者3","create":"2017-01-13","src":"/src/assets/images/logo.png","id":2},
-    {"name":"贪吃蛇4","auth":"作者4","create":"2017-01-14","src":"/src/assets/images/logo.png","id":3},
-    {"name":"贪吃蛇5","auth":"作者5","create":"2017-01-15","src":"/src/assets/images/logo.png","id":4}
-  ]
+  "homeList":{
+    "goodAuther":[
+      {"name":"作者1","src":"/src/assets/images/logo.png","id":0},
+      {"name":"作者2","src":"/src/assets/images/logo.png","id":1},
+      {"name":"作者3","src":"/src/assets/images/logo.png","id":2},
+      {"name":"作者4","src":"/src/assets/images/logo.png","id":3},
+      {"name":"作者5","src":"/src/assets/images/logo.png","id":4}
+    ],
+    "goodWork":[
+      {"name":"贪吃蛇1","auth":"作者1","detail":"这是一款贪吃蛇游戏1","src":"/src/assets/images/logo.png","id":0},
+      {"name":"贪吃蛇2","auth":"作者2","detail":"这是一款贪吃蛇游戏2","src":"/src/assets/images/logo.png","id":1},
+      {"name":"贪吃蛇3","auth":"作者3","detail":"这是一款贪吃蛇游戏3","src":"/src/assets/images/logo.png","id":2},
+      {"name":"贪吃蛇4","auth":"作者4","detail":"这是一款贪吃蛇游戏4","src":"/src/assets/images/logo.png","id":3},
+      {"name":"贪吃蛇5","auth":"作者5","detail":"这是一款贪吃蛇游戏5","src":"/src/assets/images/logo.png","id":4}
+    ],
+    "newWork":[
+      {"name":"贪吃蛇1","auth":"作者1","create":"2017-01-11","src":"/src/assets/images/logo.png","id":0},
+      {"name":"贪吃蛇2","auth":"作者2","create":"2017-01-12","src":"/src/assets/images/logo.png","id":1},
+      {"name":"贪吃蛇3","auth":"作者3","create":"2017-01-13","src":"/src/assets/images/logo.png","id":2},
+      {"name":"贪吃蛇4","auth":"作者4","create":"2017-01-14","src":"/src/assets/images/logo.png","id":3},
+      {"name":"贪吃蛇5","auth":"作者5","create":"2017-01-15","src":"/src/assets/images/logo.png","id":4}
+    ]
+  }
+  
 }

@@ -8,9 +8,10 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "server":"json-server db.json"
+    "server": "json-server db.json"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "element-ui": "^2.1.0",
     "less": "^3.0.0",
     "less-loader": "^4.0.5",

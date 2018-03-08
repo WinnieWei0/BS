@@ -1,16 +1,8 @@
 <template>
 	<div>
-		<div class="myItem">
+		<div class="myItem" v-for="item in funs" :key="item.id">
 			<div class="myMsg">
-				<div class="myText">这是我的粉丝</div>
-				<div class="myTime">
-					<el-button type="text">关注他</el-button>
-				</div>
-			</div>
-		</div>
-		<div class="myItem">
-			<div class="myMsg">
-				<div class="myText">这是我的粉丝</div>
+				<div class="myText">{{item.name}}</div>
 				<div class="myTime">
 					<el-button type="text">关注他</el-button>
 				</div>
@@ -20,9 +12,23 @@
 </template>
 
 <script>
-    export default {
-        
-    }
+	export default {
+		data(){
+			return {
+				funs:[]
+			}
+		},
+		methods:{
+			getFunsList(){
+				this.$axios.get('http://localhost:3000/funs').then(res=>{
+					this.funs=res.data
+				})
+			}
+		},
+		created(){
+			this.getFunsList()
+		}
+	}
 </script>
 
 <style scoped lang='less'>

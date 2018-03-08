@@ -38,7 +38,13 @@
       loginForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            this.$axios.get('http://localhost:3000/user').then(res=>{
+							if(this.user.name===res.data.name&&this.user.password===res.data.password){
+								this.$router.push('/')
+							}else{
+								this.$message.error('账号或密码错误')
+							}
+						})
           } else {
             console.log('error submit!!')
             return false;

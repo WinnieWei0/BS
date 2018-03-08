@@ -1,16 +1,8 @@
 <template>
 	<div>
-		<div class="myItem">
+		<div class="myItem" v-for="item in follow" :key="item.id">
 			<div class="myMsg">
-				<div class="myText">这是我的关注</div>
-				<div class="myTime">
-					<el-button type="text">取消关注</el-button>
-				</div>
-			</div>
-		</div>
-		<div class="myItem">
-			<div class="myMsg">
-				<div class="myText">这是我的关注</div>
+				<div class="myText">{{item.name}}</div>
 				<div class="myTime">
 					<el-button type="text">取消关注</el-button>
 				</div>
@@ -20,9 +12,25 @@
 </template>
 
 <script>
-    export default {
-        
-    }
+	export default {
+		data(){
+			return {
+				follow:[]
+			}
+		},
+		methods:{
+			getFollowList(){
+				this.$nextTick(()=>{
+					this.$axios.get('http://localhost:3000/follow').then(res=>{
+						this.follow=res.data
+					})
+				})
+			}
+		},
+		mounted(){
+			this.getFollowList()
+		}
+	}
 </script>
 
 <style scoped lang='less'>

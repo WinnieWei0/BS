@@ -3,84 +3,12 @@
     <el-aside width="350px">
       <div class="Title">最新作品</div>
       <div class="totalItem">
-        <div class="newItem">
-          <div class="newTitle">贪吃蛇</div>
+        <div class="newItem" v-for="item in newWork" :key="item.id">
+          <div class="newTitle">{{item.name}}</div>
           <div class="userMSG">
-            <img src="../assets/images/logo.png" alt="">
-            <span class="userName">winnie</span>
-            <span class="publicationTime">2017-1-2</span>
-          </div>
-        </div>
-        <div class="newItem">
-          <div class="newTitle">贪吃蛇</div>
-          <div class="userMSG">
-            <img src="../assets/images/logo.png" alt="">
-            <span class="userName">winnie</span>
-            <span class="publicationTime">2017-1-2</span>
-          </div>
-        </div>
-        <div class="newItem">
-          <div class="newTitle">贪吃蛇</div>
-          <div class="userMSG">
-            <img src="../assets/images/logo.png" alt="">
-            <span class="userName">winnie</span>
-            <span class="publicationTime">2017-1-2</span>
-          </div>
-        </div>
-        <div class="newItem">
-          <div class="newTitle">贪吃蛇</div>
-          <div class="userMSG">
-            <img src="../assets/images/logo.png" alt="">
-            <span class="userName">winnie</span>
-            <span class="publicationTime">2017-1-2</span>
-          </div>
-        </div>
-        <div class="newItem">
-          <div class="newTitle">贪吃蛇</div>
-          <div class="userMSG">
-            <img src="../assets/images/logo.png" alt="">
-            <span class="userName">winnie</span>
-            <span class="publicationTime">2017-1-2</span>
-          </div>
-        </div>
-        <div class="newItem">
-          <div class="newTitle">贪吃蛇</div>
-          <div class="userMSG">
-            <img src="../assets/images/logo.png" alt="">
-            <span class="userName">winnie</span>
-            <span class="publicationTime">2017-1-2</span>
-          </div>
-        </div>
-        <div class="newItem">
-          <div class="newTitle">贪吃蛇</div>
-          <div class="userMSG">
-            <img src="../assets/images/logo.png" alt="">
-            <span class="userName">winnie</span>
-            <span class="publicationTime">2017-1-2</span>
-          </div>
-        </div>
-        <div class="newItem">
-          <div class="newTitle">贪吃蛇</div>
-          <div class="userMSG">
-            <img src="../assets/images/logo.png" alt="">
-            <span class="userName">winnie</span>
-            <span class="publicationTime">2017-1-2</span>
-          </div>
-        </div>
-        <div class="newItem">
-          <div class="newTitle">贪吃蛇</div>
-          <div class="userMSG">
-            <img src="../assets/images/logo.png" alt="">
-            <span class="userName">winnie</span>
-            <span class="publicationTime">2017-1-2</span>
-          </div>
-        </div>
-        <div class="newItem">
-          <div class="newTitle">贪吃蛇</div>
-          <div class="userMSG">
-            <img src="../assets/images/logo.png" alt="">
-            <span class="userName">winnie</span>
-            <span class="publicationTime">2017-1-2</span>
+            <img :src="item.src" alt="">
+            <span class="userName">{{item.auth}}</span>
+            <span class="publicationTime">{{item.create}}</span>
           </div>
         </div>
       </div>
@@ -95,74 +23,14 @@
       <div class="goodList">
         <div class="recommendOpus">
           <div class="Title">推荐作品</div>
-          <!-- <div class="recommendTotal">
-            <div class="recommendItem">
-              <div class="userCMD">
-                <img src="../assets/images/logo.png" alt="">
-                <span class="userName">winnie</span>
-              </div>
-              <div class="recommendTitle">贪吃蛇</div>
-              <div class="recommenddetail">这是一款贪吃蛇游戏</div>
-            </div>
-          </div> -->
           <div class="recommendTotal">
-            <div class="newItem">
-              <div class="newTitle">贪吃蛇</div>
-              <div class="recommendDetail">这是一款贪吃蛇游戏</div>
+            <div class="newItem" v-for="item in goodWork" :key="item.id">
+              <div class="newTitle">{{item.name}}</div>
+              <div class="recommendDetail">{{item.detail}}</div>
               <div class="totalItem">
                 <div class="userMSG">
-                  <img src="../assets/images/logo.png" alt="">
-                  <span class="userName">winnie</span>
-                </div>
-              </div>
-            </div>
-            <div class="newItem">
-              <div class="newTitle">贪吃蛇</div>
-              <div class="recommendDetail">这是一款贪吃蛇游戏</div>
-              <div class="totalItem">
-                <div class="userMSG">
-                  <img src="../assets/images/logo.png" alt="">
-                  <span class="userName">winnie</span>
-                </div>
-              </div>
-            </div>
-            <div class="newItem">
-              <div class="newTitle">贪吃蛇</div>
-              <div class="recommendDetail">这是一款贪吃蛇游戏</div>
-              <div class="totalItem">
-                <div class="userMSG">
-                  <img src="../assets/images/logo.png" alt="">
-                  <span class="userName">winnie</span>
-                </div>
-              </div>
-            </div>
-            <div class="newItem">
-              <div class="newTitle">贪吃蛇</div>
-              <div class="recommendDetail">这是一款贪吃蛇游戏</div>
-              <div class="totalItem">
-                <div class="userMSG">
-                  <img src="../assets/images/logo.png" alt="">
-                  <span class="userName">winnie</span>
-                </div>
-              </div>
-            </div>
-            <div class="newItem">
-              <div class="newTitle">贪吃蛇</div>
-              <div class="recommendDetail">这是一款贪吃蛇游戏</div>
-              <div class="totalItem">
-                <div class="userMSG">
-                  <img src="../assets/images/logo.png" alt="">
-                  <span class="userName">winnie</span>
-                </div>
-              </div>
-            </div>
-            <div class="newItem">
-              <div class="newTitle">贪吃蛇</div>
-              <div class="recommendDetail">这是一款贪吃蛇游戏</div>
-              <div class="totalItem">
-                <div class="userMSG">
-                  <img src="../assets/images/logo.png" alt="">
-                  <span class="userName">winnie</span>
+                  <img :src="item.src" alt="">
+                  <span class="userName">{{item.auth}}</span>
                 </div>
               </div>
             </div>
@@ -171,25 +39,10 @@
         <div class="recommendAuth">
           <div class="Title">优秀作者推荐</div>
           <div class="recommendTotal">
-            <div class="newItem">
-              <span class="ranking">1</span>
-              <img src="../assets/images/logo.png" alt="">
-              <div class="newTitle">贪吃蛇</div>
-            </div>
-            <div class="newItem">
-              <span class="ranking">2</span>
-              <img src="../assets/images/logo.png" alt="">
-              <div class="newTitle">贪吃蛇</div>
-            </div>
-            <div class="newItem">
-              <span class="ranking">3</span>
-              <img src="../assets/images/logo.png" alt="">
-              <div class="newTitle">贪吃蛇</div>
-            </div>
-            <div class="newItem">
-              <span class="ranking">4</span>
-              <img src="../assets/images/logo.png" alt="">
-              <div class="newTitle">贪吃蛇</div>
+            <div class="newItem" v-for="item in goodAuther" :key="item.id">
+              <span class="ranking">{{item.id+1}}</span>
+              <img :src="item.src" alt="">
+              <div class="newTitle">{{item.name}}</div>
             </div>
           </div>
         </div>
@@ -210,8 +63,26 @@
           {src:'/src/assets/images/swipper5.jpg',alt:'这是个图片5'},
           {src:'/src/assets/images/swipper6.jpg',alt:'这是个图片6'},
           {src:'/src/assets/images/swipper7.jpg',alt:'这是个图片7'}
-        ]
+        ],
+        list:{
+          newWork:[],
+          goodWork:[],
+          goodAuther:[]
+        }
       }
+    },
+    methods:{
+      getList(){
+        this.$axios.get('http://localhost:3000/homeList').then(res=>{
+          console.log(res)
+          this.newWork=res.data.newWork
+          this.goodWork=res.data.goodWork
+          this.goodAuther=res.data.goodAuther
+        })
+      }
+    },
+    created(){
+      this.getList()
     }
   }
 </script>
