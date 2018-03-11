@@ -11,8 +11,9 @@
 			<el-form-item label="密码" prop="confirmPwd">
 				<el-input v-model="user.confirmPwd" type="password"></el-input>
 			</el-form-item>
+			<router-link :to="{path:'/user/login'}">已有账号？去登录</router-link>
 			<el-form-item>
-				<el-button type="primary" @click="loginForm('userForm')">立即创建</el-button>
+				<el-button type="primary" @click="loginForm('userForm')">注册</el-button>
 			</el-form-item>
 		</el-form>
   </div>
@@ -69,6 +70,9 @@
     height: 50px;
     text-align: center;
     margin-bottom: 10px;
-  }
+	}
+	.el-form-item{
+		margin-top: 15px;
+	}
 }
 </style>

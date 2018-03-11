@@ -31,22 +31,13 @@
       {"content":"好好嘿","create":"2017-01-02","id":4}
     ]
   },
-  "message":{
-    "toMe":[
-      {"content":"好好看1","create":"2017-01-02","from":"wu","id":0},
-      {"content":"好好玩1","create":"2017-01-02","from":"wang","id":1},
-      {"content":"好好吃2","create":"2017-01-02","from":"zhao","id":2},
-      {"content":"好好睡2","create":"2017-01-02","from":"li","id":3},
-      {"content":"好好嘿3","create":"2017-01-02","from":"sun","id":4}
-    ],
-    "toHe":[
+  "message":[
       {"content":"好好看1","create":"2017-01-02","id":0},
       {"content":"好好玩1","create":"2017-01-02","id":1},
-      {"content":"好好吃1","create":"2017-01-02","id":2},
-      {"content":"好好睡1","create":"2017-01-02","id":3},
-      {"content":"好好嘿1","create":"2017-01-02","id":4}
-    ]
-  },
+      {"content":"好好吃2","create":"2017-01-02","id":2},
+      {"content":"好好睡2","create":"2017-01-02","id":3},
+      {"content":"好好嘿3","create":"2017-01-02","id":4}
+    ],
   "homeList":{
     "goodAuther":[
       {"name":"作者1","src":"/src/assets/images/logo.png","id":0},

@@ -37,7 +37,7 @@
 .main>div{
   width: 100%;
   clear: both;
-  height: 500px;
+  min-height: 500px;
 }
 .el-aside{
   height: 100%;

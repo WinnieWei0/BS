@@ -3,7 +3,7 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <div class="logo">
-          <img src="/src/assets/images/logo.png" alt="">
+          <img src="/src/assets/images/logo1.png" alt="">
         </div>
       </el-col>
       <el-col :span="12">

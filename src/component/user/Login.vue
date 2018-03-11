@@ -9,7 +9,7 @@
 				<el-input v-model="user.password"></el-input>
 			</el-form-item>
 			<el-form-item>
-				<el-button type="primary" @click="loginForm('userForm')">立即创建</el-button>
+				<el-button type="primary" @click="loginForm('userForm')">登录</el-button>
 			</el-form-item>
 		</el-form>
   </div>
@@ -46,7 +46,6 @@
 							}
 						})
           } else {
-            console.log('error submit!!')
             return false;
           }
         })
@@ -67,6 +66,9 @@
     height: 50px;
     text-align: center;
     margin-bottom: 10px;
-  }
+	}
+	.el-form-item__content{
+		text-align: center;
+	}
 }
 </style>

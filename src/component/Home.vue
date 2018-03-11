@@ -3,7 +3,7 @@
     <el-aside width="350px">
       <div class="Title">最新作品</div>
       <div class="totalItem">
-        <div class="newItem" v-for="item in newWork" :key="item.id">
+        <div class="newItem" v-for="item in list.newWork" :key="item.id">
           <div class="newTitle">{{item.name}}</div>
           <div class="userMSG">
             <img :src="item.src" alt="">
@@ -24,7 +24,7 @@
         <div class="recommendOpus">
           <div class="Title">推荐作品</div>
           <div class="recommendTotal">
-            <div class="newItem" v-for="item in goodWork" :key="item.id">
+            <div class="newItem" v-for="item in list.goodWork" :key="item.id">
               <div class="newTitle">{{item.name}}</div>
               <div class="recommendDetail">{{item.detail}}</div>
               <div class="totalItem">
@@ -39,7 +39,7 @@
         <div class="recommendAuth">
           <div class="Title">优秀作者推荐</div>
           <div class="recommendTotal">
-            <div class="newItem" v-for="item in goodAuther" :key="item.id">
+            <div class="newItem" v-for="item in list.goodAuther" :key="item.id">
               <span class="ranking">{{item.id+1}}</span>
               <img :src="item.src" alt="">
               <div class="newTitle">{{item.name}}</div>
@@ -75,9 +75,10 @@
       getList(){
         this.$axios.get('http://localhost:3000/homeList').then(res=>{
           console.log(res)
-          this.newWork=res.data.newWork
-          this.goodWork=res.data.goodWork
-          this.goodAuther=res.data.goodAuther
+          console.log(res.data.newWork)
+          this.list.newWork=res.data.newWork
+          this.list.goodWork=res.data.goodWork
+          this.list.goodAuther=res.data.goodAuther
         })
       }
     },
