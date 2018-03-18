@@ -8,8 +8,6 @@ import VueRouter from "vue-router"
 Vue.use(VueRouter)
 import router from './router'
 import axios from 'axios'
-// import cors from 'cors'
-// Vue.use(cors)
 axios.defaults.withCredentials = true
 Vue.prototype.$axios = axios;
 new Vue({
