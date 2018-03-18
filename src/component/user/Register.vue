@@ -34,11 +34,11 @@
 					],
 					password:[
 						{ required: true, message: '请输入密码', trigger: 'blur' },
-						{ min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
+						{ min: 4, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
 					],
 					confirmPwd:[
 						{ required: true, message: '请确认密码', trigger: 'blur' },
-						{ min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
+						{ min: 4, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
 					]
 				}
 			}
@@ -47,9 +47,16 @@
       loginForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+            this.$axios.post('/register',{userName:this.user.name,userPwd:this.user.password}).then(res=>{
+							console.log(res)
+							if(res.data.code===200){
+								this.$message({message: res.data.msg,type: 'success'});
+								this.$router.push('/login')
+							}else if(res.data.code===500){
+								this.$message({message:res.data.msg,type: 'warning'});
+							}
+						})
           } else {
-            console.log('error submit!!')
             return false;
           }
         })

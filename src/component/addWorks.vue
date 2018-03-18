@@ -4,7 +4,7 @@
 		<div class="workArea">
 			<div class="addTitle">
 				<el-input v-model="addTitle" placeholder="请输入标题"></el-input>
-				<el-button type="warning" round><i class="el-icon-check"></i>&nbsp;&nbsp;发布作品</el-button>
+				<el-button type="warning" round @click="addWork"><i class="el-icon-check"></i>&nbsp;&nbsp;发布作品</el-button>
 			</div>
 			<div class="addDetail">
 				<el-input v-model="addDetail" placeholder="请输入描述信息"></el-input>
@@ -21,12 +21,19 @@ export default {
   data(){ 
 		return {
 			addTitle:'',
-			addDetail: ''
+			addDetail: '',
+			addCode:''
 		} 
+	},
+	methods:{
+addWork(){
+
+}
 	},
 	mounted(){
 		var editor = new E('#editor','#editor2')
 		editor.create()
+		// console.log(edi)
 	}
 };
 </script>

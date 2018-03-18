@@ -37,7 +37,7 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$axios
-            .post("http://127.0.0.1:3000/login", { userName: this.user.name })
+            .post("/login", { userName: this.user.name })
             .then(res => {
               console.log(res);
               if (res.data.length) {
