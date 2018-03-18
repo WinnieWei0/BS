@@ -20,8 +20,8 @@
     data(){
 			return {
 				user:{
-					name:'',
-					password:''
+					name:'root',
+					password:'root'
 				},
 				rules:{
 					name:[
@@ -29,7 +29,7 @@
 					],
 					password:[
 						{ required: true, message: '请输入密码', trigger: 'blur' },
-						{ min: 6, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
+						{ min: 4, max: 18, message: '长度在 6 到 18 个字符', trigger: 'blur' }
 					]
 				}
 			}
@@ -38,15 +38,18 @@
       loginForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$axios.get('http://localhost:3000/user').then(res=>{
-							if(this.user.name===res.data.name&&this.user.password===res.data.password){
-								this.$router.push('/')
-							}else{
-								this.$message.error('账号或密码错误')
-							}
+            this.$axios.post('http://127.0.0.1:3000/login').then(res=>{
+							console.log(res)
+							// res.data.map(v=>{
+							// 	if(this.user.name===v.userName&&this.user.password===v.userPwd){
+							// 	this.$router.push('/')
+							// 	sessionStorage.setItem('user',JSON.stringify(v))
+							// }else{
+							// 	this.$message.error('账号或密码错误')
+							// }
+							// })
 						})
           } else {
-            return false;
           }
         })
       }

@@ -21,7 +21,7 @@ export default new VueRouter({
     { path: '/', component: indexComponent,children:[
       {name:'home',path:'home',component:homeComponent},
       { name: 'add', path: 'add', component: addComponent },
-      // 管理中心
+      // 管理中心`
       { name: 'admini', path: 'admini', component: adminiComponent,children:[
         {name:'comment',path:'comment',component:commentComponent},
         {name:'message',path:'message',component:messageComponent}

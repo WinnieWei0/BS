@@ -8,10 +8,10 @@ import VueRouter from "vue-router"
 Vue.use(VueRouter)
 import router from './router'
 import axios from 'axios'
-// 跨域
-axios.defaults.withCredentials=true
+// import cors from 'cors'
+// Vue.use(cors)
+axios.defaults.withCredentials = true
 Vue.prototype.$axios = axios;
-
 new Vue({
   el: '#app',
   render: h => h(App),
