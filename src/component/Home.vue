@@ -3,12 +3,12 @@
     <el-aside width="350px">
       <div class="Title">最新作品</div>
       <div class="totalItem">
-        <div class="newItem" v-for="item in list.newWork" :key="item.id">
-          <div class="newTitle">{{item.name}}</div>
+        <div class="newItem" v-for="item in list.newWork" :key="item.w_id">
+          <div class="newTitle">{{item.workName}}</div>
           <div class="userMSG">
-            <img :src="item.src" alt="">
-            <span class="userName">{{item.auth}}</span>
-            <span class="publicationTime">{{item.create}}</span>
+            <!-- <img :src="item.src" alt=""> -->
+            <span class="userName">{{item.user_id}}</span>
+            <span class="publicationTime">{{item.createTime}}</span>
           </div>
         </div>
       </div>
@@ -24,13 +24,13 @@
         <div class="recommendOpus">
           <div class="Title">推荐作品</div>
           <div class="recommendTotal">
-            <div class="newItem" v-for="item in list.goodWork" :key="item.id">
-              <div class="newTitle">{{item.name}}</div>
-              <div class="recommendDetail">{{item.detail}}</div>
+            <div class="newItem" v-for="item in list.goodWork" :key="item.w_id">
+              <div class="newTitle">{{item.workName}}</div>
+              <div class="recommendDetail">{{item.workDetail}}</div>
               <div class="totalItem">
                 <div class="userMSG">
-                  <img :src="item.src" alt="">
-                  <span class="userName">{{item.auth}}</span>
+                  <!-- <img :src="item.src" alt=""> -->
+                  <span class="userName">{{item.user_id}}</span>
                 </div>
               </div>
             </div>
@@ -39,10 +39,10 @@
         <div class="recommendAuth">
           <div class="Title">优秀作者推荐</div>
           <div class="recommendTotal">
-            <div class="newItem" v-for="item in list.goodAuther" :key="item.id">
-              <span class="ranking">{{item.id+1}}</span>
-              <img :src="item.src" alt="">
-              <div class="newTitle">{{item.name}}</div>
+            <div class="newItem" v-for="item in list.goodAuther" :key="item.user_id">
+              <span class="ranking">{{item.user_id}}</span>
+              <!-- <img :src="item.src" alt=""> -->
+              <div class="newTitle">{{item.userName}}</div>
             </div>
           </div>
         </div>
@@ -73,9 +73,8 @@
     },
     methods:{
       getList(){
-        this.$axios.get('http://localhost:3000/homeList').then(res=>{
+        this.$axios.get('/home').then(res=>{
           console.log(res)
-          console.log(res.data.newWork)
           this.list.newWork=res.data.newWork
           this.list.goodWork=res.data.goodWork
           this.list.goodAuther=res.data.goodAuther
