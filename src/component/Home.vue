@@ -7,7 +7,7 @@
           <div class="newTitle">{{item.workName}}</div>
           <div class="userMSG">
             <!-- <img :src="item.src" alt=""> -->
-            <span class="userName">{{item.user_id}}</span>
+            <span class="userName">{{item.userName}}</span>
             <span class="publicationTime">{{item.createTime}}</span>
           </div>
         </div>
@@ -30,7 +30,7 @@
               <div class="totalItem">
                 <div class="userMSG">
                   <!-- <img :src="item.src" alt=""> -->
-                  <span class="userName">{{item.user_id}}</span>
+                  <span class="userName">{{item.userName}}</span>
                 </div>
               </div>
             </div>
