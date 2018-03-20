@@ -2,8 +2,8 @@
 	<div>
 		<div class="myItem" v-for="item in message" :key="item.id">
 			<div class="myMsg">
-				<div class="myText">{{item.content}}</div>
-				<div class="myTime">{{item.create}}</div>
+				<div class="myText">{{item.mDetail}}</div>
+				<div class="myTime">{{item.userName}}</div>
 			</div>
 			<div class="from">
 				<!-- <div class="fromName">{{item.from}}</div> -->
@@ -31,7 +31,8 @@ export default {
       this.showReply = false;
     },
     getMessageList() {
-      this.$axios.get("http://localhost:3000/message").then(res => {
+      this.$axios.get("/message").then(res => {
+				console.log(res.data)
         this.message = res.data;
       });
     }

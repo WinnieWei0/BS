@@ -2,9 +2,9 @@
 	<div>
 		<div class="myItem" v-for="item in funs" :key="item.id">
 			<div class="myMsg">
-				<div class="myText">{{item.name}}</div>
-				<div class="myTime">
-					<el-button type="text">关注他</el-button>
+				<div class="myText">{{item.userName}}</div>
+				<div class="myTime" v-if="!item.status.data[0]">
+					<el-button type="text" @click="updateStatus(item.funs_id)">关注他</el-button>
 				</div>
 			</div>
 		</div>
@@ -20,8 +20,22 @@
 		},
 		methods:{
 			getFunsList(){
-				this.$axios.get('http://localhost:3000/funs').then(res=>{
+				this.$axios.get('/funs').then(res=>{
+					// console.log(res.data)
 					this.funs=res.data
+				})
+			},
+			updateStatus(id){
+				this.$axios.get('/funs/update',{
+					params:{
+						id
+					}
+				}).then(res=>{
+					console.log(res.data)
+					if(res.data.code===200){
+						this.$message({type:'success',message:res.data.msg})
+						this.$router.go(0)
+					}
 				})
 			}
 		},

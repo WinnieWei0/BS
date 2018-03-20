@@ -6,11 +6,11 @@
 			</div>
 			<div class="from">
 				<div class="fromName">{{item.userName}}</div>
-				<div class="myText">{{item.cmDetail}}</div>
+				<!-- <div class="myText">{{item.cmDetail}}</div> -->
 				<el-button type="text" @click="showReply=true">回复</el-button>
 			</div>
 			<div class="reply" v-if="showReply">
-				<el-input v-model="input" type="textarea" autosize placeholder="回复："></el-input>
+				<el-input v-model="input" type="textarea" autosize placeholder="回复:"></el-input>
 				<el-button type="primary" class="commitComment" @click="commitComment">确定</el-button>
 			</div>
 		</div>
