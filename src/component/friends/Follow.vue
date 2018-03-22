@@ -2,9 +2,9 @@
 	<div>
 		<div class="myItem" v-for="item in follow" :key="item.id">
 			<div class="myMsg">
-				<div class="myText">{{item.name}}</div>
+				<div class="myText">{{item.userName}}</div>
 				<div class="myTime">
-					<el-button type="text">取消关注</el-button>
+					<el-button type="text" @click="updateFollow(item.follow_id)">取消关注</el-button>
 				</div>
 			</div>
 		</div>
@@ -21,13 +21,27 @@
 		methods:{
 			getFollowList(){
 				this.$nextTick(()=>{
-					this.$axios.get('http://localhost:3000/follow').then(res=>{
+					this.$axios.get('/follow').then(res=>{
 						this.follow=res.data
 					})
 				})
+			},
+			updateFollow(id){
+				this.follow.map(v=>{
+					if(v.follow_id===id){
+						this.$axios.get('/follow/update',{
+							params:{
+								id
+							}
+						}).then(res=>{
+							this.$message({type:'success',message:res.data.msg})
+						this.$router.go(0)
+						})
+					}
+				})
 			}
 		},
-		mounted(){
+		created(){
 			this.getFollowList()
 		}
 	}
