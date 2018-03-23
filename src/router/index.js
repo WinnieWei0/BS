@@ -11,6 +11,9 @@ import messageComponent from '../component/manage/Message.vue'
 import funsComponent from '../component/friends/Funs.vue'
 import followComponent from '../component/friends/Follow.vue'
 import workshare from '../component/worksShare.vue'
+import modifyComponent from '../component/user/Modify.vue'
+import userList from '../component/user/UserList.vue'
+
 
 
 export default new VueRouter({
@@ -31,7 +34,11 @@ export default new VueRouter({
         {name:'funs',path:'funs',component:funsComponent},
         {name:'follow',path:'follow',component:followComponent}
       ] },
-      {name:'share',path:'workshare',component:workshare}
+      {name:'share',path:'workshare',component:workshare},
+      // 个人中心
+      {name:'userlist',path:'userList',component:userList},
+      // 修改密码
+      {name:'modify',path:'modifyPwd',component:modifyComponent}
     ] },
     { name: 'login', path: '/user/login', component: loginComponent },
     { name: 'register', path: '/user/register', component: registerComponent }

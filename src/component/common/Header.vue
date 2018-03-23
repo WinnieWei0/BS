@@ -15,10 +15,20 @@
         </el-menu>
       </el-col>
       <el-col :span="6">
-        <div class="link">
+        <div class="link" v-if="!showUser">
           <router-link :to="{path:'/user/login'}"><el-button type="text">登录</el-button></router-link>
           <router-link :to="{path:'/user/register'}"><el-button type="text">注册</el-button></router-link>
         </div>
+        <el-dropdown v-if="showUser">
+          <span class="el-dropdown-link">
+            {{user.name}}<i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item><router-link :to="{path:'/userList'}">个人中心</router-link></el-dropdown-item>
+            <el-dropdown-item><router-link :to="{path:'/modifyPwd'}">修改密码</router-link></el-dropdown-item>
+            <el-dropdown-item @click.native="signOut">退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </el-col>
     </el-row>
   </div>
@@ -28,7 +38,18 @@
 export default {
   data(){
     return {
-      activeIndex:'0'
+      activeIndex:'0',
+      user:{
+        name:sessionStorage.getItem('user')?JSON.parse(sessionStorage.getItem('user')).userName:''
+      },
+      showUser:sessionStorage.getItem('user')
+    }
+  },
+  methods:{
+    signOut(){
+      sessionStorage.removeItem('user')
+      this.$router.push('/')
+      this.$router.go(0)
     }
   }
 };
@@ -45,5 +66,10 @@ export default {
 }
 .el-menu-item{
   font-size: 16px;
+}
+.el-dropdown {
+  height: 60px;
+  line-height: 60px;
+  font-size: 20px;
 }
 </style>
