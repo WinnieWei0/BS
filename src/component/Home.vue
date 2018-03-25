@@ -76,6 +76,9 @@
         this.$axios.get('/home').then(res=>{
           console.log(res)
           this.list.newWork=res.data.newWork
+          this.list.newWork.map(v=>{
+            v.createTime=v.createTime.split('.')[0].replace('T',' ')
+          })
           this.list.goodWork=res.data.goodWork
           this.list.goodAuther=res.data.goodAuther
         })
