@@ -4,7 +4,7 @@
       <div class="Title">最新作品</div>
       <div class="totalItem">
         <div class="newItem" v-for="item in list.newWork" :key="item.w_id">
-          <div class="newTitle">{{item.workName}}</div>
+          <div class="newTitle"><router-link :to="{path:'/workdetail',params:item.w_id}">{{item.workName}}</router-link></div>
           <div class="userMSG">
             <!-- <img :src="item.src" alt=""> -->
             <span class="userName">{{item.userName}}</span>
@@ -65,7 +65,14 @@
           {src:'/src/assets/images/swipper7.jpg',alt:'这是个图片7'}
         ],
         list:{
-          newWork:[],
+          newWork:[
+            {
+              w_id:1,
+              workName:'贪吃蛇',
+              userName:'winnie',
+              createTime:'2017-01-02 01:11:22'
+            }
+          ],
           goodWork:[],
           goodAuther:[]
         }

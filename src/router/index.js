@@ -34,7 +34,7 @@ export default new VueRouter({
         {name:'funs',path:'funs',component:funsComponent},
         {name:'follow',path:'follow',component:followComponent}
       ] },
-      {name:'share',path:'workshare',component:workshare},
+      {name:'share',path:'workdetail',component:workshare},
       // 个人中心
       {name:'userlist',path:'userList',component:userList},
       // 修改密码
