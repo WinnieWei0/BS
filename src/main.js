@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import ElementUI from 'element-ui'
+import '../src/assets/font-awesome-4.7.0/css/font-awesome.min.css'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 import './assets/css/base.css'

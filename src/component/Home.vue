@@ -4,7 +4,7 @@
       <div class="Title">最新作品</div>
       <div class="totalItem">
         <div class="newItem" v-for="item in list.newWork" :key="item.w_id">
-          <div class="newTitle"><router-link :to="{path:'/workdetail',params:item.w_id}">{{item.workName}}</router-link></div>
+          <div class="newTitle"><router-link :to="{path:'/workdetail',query:{id:item.w_id}}">{{item.workName}}</router-link></div>
           <div class="userMSG">
             <!-- <img :src="item.src" alt=""> -->
             <span class="userName">{{item.userName}}</span>
