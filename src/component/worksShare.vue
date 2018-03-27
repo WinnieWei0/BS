@@ -13,8 +13,8 @@
         {{item.workDetail}}
       </div>
       <div class="workCode">
-        <div id="editor1" v-if="false"></div>
-        <div id="editor">s</div>
+      <div id="editor" class="editor" v-if="false"></div>
+			<div id="editor2" class="editor2"></div>
       </div>
     </div>
   </div>
@@ -42,14 +42,12 @@ import E from "wangeditor";
     created(){
       this.getData()
     },
-    mounted(){
-      // var E = window.wangEditor
-      var editor = new E('#editor1','#editor')
-      editor.create()
-      editor.txt.html('<p>用 JS 设置的内容</p>')
-      // editor.$textElem.attr('contenteditable', false)
-      // editor.txt.html(this.detailList[0].workCode)
-    }
+    updated() {
+      var editor = new E("#editor", "#editor2");
+      editor.create();
+      editor.txt.html(this.detailList[0].workCode)
+      editor.$textElem.attr('contenteditable', false)
+  }
   }
 </script>
 
@@ -87,5 +85,12 @@ import E from "wangeditor";
   .set{
     color: orangered;
   }
+}
+.editor {
+  border: 1px solid #ccc;
+}
+.editor2 {
+  border: 1px solid #ccc;
+  min-height: 400px;
 }
 </style>
