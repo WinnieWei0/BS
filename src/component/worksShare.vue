@@ -5,9 +5,9 @@
         {{item.workName}}
       </div>
       <div class="praise">
-        <i class="fa fa-thumbs-o-up"></i>
-        <i class="fa fa-thumbs-up set"></i>
-        <i class="fa fa-trash-o"></i>
+        <i v-if="showThumb" class="fa fa-thumbs-o-up" @click="thumbs(item.count)"></i>
+        <i v-if="!showThumb" class="fa fa-thumbs-up set"></i>
+        <i class="fa fa-trash-o" @click="delwork(item.w_id)"></i>
       </div>
       <div class="workDesc">
         {{item.workDetail}}
@@ -25,7 +25,8 @@ import E from "wangeditor";
   export default {
     data(){
       return {
-        detailList:[]
+        detailList:[],
+        showThumb:true
       }
     },
     methods:{
@@ -36,6 +37,36 @@ import E from "wangeditor";
           }
         }).then(res=>{
           this.detailList=res.data
+        })
+      },
+      thumbs(count){
+        this.$axios.get('/thumbs',{
+          params:{
+            id:this.$route.query.id,
+            count:count+1
+          }
+        }).then(res=>{
+          if(res.data.code===200){
+            this.showThumb=false
+          }
+        })
+      },
+      delwork(id){
+        this.detailList=this.detailList.filter(v=>v.w_id!=id)
+        this.$axios.get('/del',{
+          params:{
+            id
+          }
+        }).then(res=>{
+          if(res.data.code!==200){
+            this.$message.error('删除失败')
+          }else{
+            this.$message({
+              type:'success',
+              message:'删除成功'
+            })
+            this.$router.go(-1)
+          }
         })
       }
     },
@@ -81,9 +112,11 @@ import E from "wangeditor";
   i{
     font-size: 30px;
     margin-right: 10px;
+    cursor: pointer;
   }
   .set{
     color: orangered;
+    cursor: none;
   }
 }
 .editor {

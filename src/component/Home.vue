@@ -25,7 +25,7 @@
           <div class="Title">推荐作品</div>
           <div class="recommendTotal">
             <div class="newItem" v-for="item in list.goodWork" :key="item.w_id">
-              <div class="newTitle">{{item.workName}}</div>
+              <div class="newTitle"><router-link :to="{path:'/workdetail',query:{id:item.w_id}}">{{item.workName}}</router-link></div>
               <div class="recommendDetail">{{item.workDetail}}</div>
               <div class="totalItem">
                 <div class="userMSG">
@@ -39,10 +39,10 @@
         <div class="recommendAuth">
           <div class="Title">优秀作者推荐</div>
           <div class="recommendTotal">
-            <div class="newItem" v-for="item in list.goodAuther" :key="item.user_id">
-              <span class="ranking">{{item.user_id}}</span>
+            <div class="newItem" v-for="(item,i) in list.goodAuther" :key="item.user_id">
+              <span class="ranking">{{i+1}}</span>
               <!-- <img :src="item.src" alt=""> -->
-              <div class="newTitle">{{item.userName}}</div>
+              <div class="newTitle"><router-link :to="{path:'/userList',query:{id:item.user_id}}">{{item.userName}}</router-link></div>
             </div>
           </div>
         </div>
@@ -65,14 +65,7 @@
           {src:'/src/assets/images/swipper7.jpg',alt:'这是个图片7'}
         ],
         list:{
-          newWork:[
-            {
-              w_id:1,
-              workName:'贪吃蛇',
-              userName:'winnie',
-              createTime:'2017-01-02 01:11:22'
-            }
-          ],
+          newWork:[],
           goodWork:[],
           goodAuther:[]
         }
@@ -81,7 +74,7 @@
     methods:{
       getList(){
         this.$axios.get('/home').then(res=>{
-          console.log(res)
+          console.log(res.data)
           this.list.newWork=res.data.newWork
           this.list.newWork.map(v=>{
             v.createTime=v.createTime.split('.')[0].replace('T',' ')

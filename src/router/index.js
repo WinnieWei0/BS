@@ -24,6 +24,11 @@ export default new VueRouter({
     { path: '/', component: indexComponent,children:[
       {name:'home',path:'home',component:homeComponent},
       { name: 'add', path: 'add', component: addComponent },
+      {name:'share',path:'workdetail',component:workshare},
+      // 个人中心
+      {name:'userlist',path:'userList',component:userList},
+      // 修改密码
+      {name:'modify',path:'modifyPwd',component:modifyComponent},
       // 管理中心`
       { name: 'admini', path: 'admini', component: adminiComponent,children:[
         {name:'comment',path:'comment',component:commentComponent},
@@ -33,12 +38,7 @@ export default new VueRouter({
       { name: 'friends', path: 'friends', component: friendsComponent,children:[
         {name:'funs',path:'funs',component:funsComponent},
         {name:'follow',path:'follow',component:followComponent}
-      ] },
-      {name:'share',path:'workdetail',component:workshare},
-      // 个人中心
-      {name:'userlist',path:'userList',component:userList},
-      // 修改密码
-      {name:'modify',path:'modifyPwd',component:modifyComponent}
+      ] }
     ] },
     { name: 'login', path: '/user/login', component: loginComponent },
     { name: 'register', path: '/user/register', component: registerComponent }

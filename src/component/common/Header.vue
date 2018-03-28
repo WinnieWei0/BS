@@ -24,7 +24,7 @@
             {{user.name}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item><router-link :to="{path:'/userList'}">个人中心</router-link></el-dropdown-item>
+            <el-dropdown-item><router-link :to="{path:'/userList?id='+user.id}">个人中心</router-link></el-dropdown-item>
             <el-dropdown-item><router-link :to="{path:'/modifyPwd'}">修改密码</router-link></el-dropdown-item>
             <el-dropdown-item @click.native="signOut">退出</el-dropdown-item>
           </el-dropdown-menu>
@@ -40,7 +40,8 @@ export default {
     return {
       activeIndex:'0',
       user:{
-        name:sessionStorage.getItem('user')?JSON.parse(sessionStorage.getItem('user')).userName:''
+        id:JSON.parse(sessionStorage.getItem('user')).user_id,
+        name:JSON.parse(sessionStorage.getItem('user')).userName
       },
       showUser:sessionStorage.getItem('user')
     }

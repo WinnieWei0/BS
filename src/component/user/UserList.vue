@@ -2,7 +2,7 @@
   <div>
     <div class="item" v-for="item in dataList" :key="item.w_id">
       <div class="listTop">
-        <div class="listName">{{item.workName}}</div>
+        <div class="listName"><router-link :to="{path:'/workdetail',query:{id:item.w_id}}">{{item.workName}}</router-link></div>
         <div class="listDetail">{{item.workDetail}}</div>
       </div>
       <el-button class="btnDel" type="text" @click="delwork(item.w_id)">删除</el-button>
@@ -26,10 +26,9 @@
       getDataList(){
         this.$axios.get('/userlist',{
           params:{
-            id:JSON.parse(sessionStorage.getItem('user')).user_id
+            id:this.$route.query.id
           }
         }).then(res=>{
-          console.log(res.data)
           this.dataList=res.data
           this.dataList.map(v=>{
             v.createTime=v.createTime.split('.')[0].replace('T',' ')
