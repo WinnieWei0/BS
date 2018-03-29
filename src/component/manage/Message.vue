@@ -1,17 +1,16 @@
 <template>
 	<div>
-		<div class="myItem" v-for="item in message" :key="item.id">
+		<div class="myItem" v-for="item in message" :key="item.m_id">
 			<div class="myMsg">
 				<div class="myText">{{item.mDetail}}</div>
-				<div class="myTime">{{item.userName}}</div>
+				<div class="myTime"><router-link :to="{path:'/userList',query:{id:item.user_id}}">{{item.userName}}</router-link></div>
 			</div>
 			<div class="from">
-				<!-- <div class="fromName">{{item.from}}</div> -->
-				<el-button type="text" @click="showReply=true">回复</el-button>
+				<el-button type="text" @click.native="btnReply(item.m_id)">回复</el-button>
 			</div>
-			<div class="reply" v-if="showReply">
-				<el-input v-model="input" type="textarea" autosize placeholder="回复："></el-input>
-				<el-button type="primary" class="commitComment" @click="commitComment">确定</el-button>
+			<div class="reply" v-if="item.show">
+				<el-input v-model="item.content" type="textarea" autosize placeholder="回复："></el-input>
+				<el-button type="primary" class="commitComment" @click="commitComment(item.m_id)">确定</el-button>
 			</div>
 		</div>
 	</div>
@@ -21,19 +20,56 @@
 export default {
   data() {
     return {
-      showReply: false,
-      input: "",
       message: []
+			// show:false
     };
   },
   methods: {
-    commitComment() {
-      this.showReply = false;
+		btnReply(id){
+			this.message.map(v=>{
+				if(v.m_id===id){
+					v.show=true
+				}
+			})
+		},
+    commitComment(id) {
+      this.message.map(v=>{
+				if(v.m_id===id){
+					if(!v.content){
+						return
+					}
+					this.$axios.get('/message/reply',{
+						params:{
+							login_id:JSON.parse(sessionStorage.getItem('user')).user_id,
+							user_id:v.user_id,
+							mDetail:v.content
+						}
+					}).then(res=>{
+						if(res.data.code===200){
+							v.show=false
+							this.getMessageList()
+						}else{
+							this.$message.error(res.data)
+						}
+					})
+				}
+			})
     },
     getMessageList() {
-      this.$axios.get("/message").then(res => {
+      this.$axios.get("/message",{
+				params:{
+					id:JSON.parse(sessionStorage.getItem('user')).user_id
+				}
+			}).then(res => {
 				console.log(res.data)
         this.message = res.data;
+				this.message.map(v=>{
+					v.content=''
+					this.$set(v,'show',false)
+					if(!v.isShow.data[0]){
+						v.mDetail='回复('+v.userName+'): '+v.mDetail
+					}
+				})
       });
     }
   },
@@ -46,7 +82,7 @@ export default {
 <style scoped lang='less'>
 .myItem{
 	border: 1px solid #cccccc;
-	padding: 10px 10px 0;
+	padding: 10px;
 	margin-bottom: 10px;
 	.myMsg{
 		clear: both;

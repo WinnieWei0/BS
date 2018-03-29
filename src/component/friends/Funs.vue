@@ -20,8 +20,11 @@
 		},
 		methods:{
 			getFunsList(){
-				this.$axios.get('/funs').then(res=>{
-					// console.log(res.data)
+				this.$axios.get('/funs',{
+					params:{
+						id:JSON.parse(sessionStorage.getItem('user')).user_id
+					}
+				}).then(res=>{
 					this.funs=res.data
 				})
 			},
@@ -31,10 +34,9 @@
 						id
 					}
 				}).then(res=>{
-					console.log(res.data)
 					if(res.data.code===200){
 						this.$message({type:'success',message:res.data.msg})
-						this.$router.go(0)
+						this.getFunsList()
 					}
 				})
 			}
