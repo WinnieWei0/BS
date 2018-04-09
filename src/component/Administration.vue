@@ -42,14 +42,17 @@
 .el-aside{
   height: 100%;
   text-align: left;
-  background-color: #d3dce6;
+  background-color: #fff;
   color: #333;
   float: left;
 }
 .el-main{
   width: 940px;
-  background-color: #e9eef3;
+  background-color: white;
   color: #333;
-  float: right;
+  float: left;
+  padding: 20px;
+  margin-left: 10px;
+  min-height: 800px;
 }
 </style>

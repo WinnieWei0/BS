@@ -7,18 +7,6 @@
         <el-menu-item index="0">
             <span slot="title">我的好友</span>
         </el-menu-item>
-        <!-- <router-link :to="{path:'/friends/funs'}">
-          <el-menu-item index="1">
-              <i class="el-icon-menu"></i>
-              <span slot="title">我的粉丝</span>
-          </el-menu-item>
-        </router-link>
-        <router-link :to="{path:'/friends/follow'}">
-          <el-menu-item index="2">
-              <i class="el-icon-setting"></i>
-              <span slot="title">我的关注</span>
-          </el-menu-item>
-        </router-link> -->
       </el-menu>
     </el-aside>
     <el-main>
@@ -82,20 +70,25 @@
 .main>div{
   width: 100%;
   clear: both;
-  height: 500px;
 }
 .el-aside{
   height: 100%;
   text-align: left;
-  background-color: #d3dce6;
+  background-color: #fff;
   color: #333;
   float: left;
 }
+.el-menu{
+  height: 100%;
+}
 .el-main{
   width: 940px;
-  background-color: #e9eef3;
+  background-color: white;
   color: #333;
-  float: right;
+  float: left;
+  margin-left: 10px;
+  min-height: 650px;
+  padding: 20px;
 }
 .myItem{
 	border: 1px solid #cccccc;

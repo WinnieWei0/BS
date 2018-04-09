@@ -92,6 +92,8 @@ export default {
 <style scoped lang='less'>
 .main > div {
   width: 100%;
+  background-color: white;
+  padding: 20px;
 }
 .addWorkTitle {
   font: italic bold 20px/50px "microsoft yahei";

@@ -28,7 +28,7 @@ export default {
 <style>
 .el-header,
 .el-footer {
-  background-color: #cbd0d8;
+  background-color: #eee;
   color: #333;
   text-align: center;
 }

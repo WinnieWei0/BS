@@ -75,6 +75,8 @@
 .main>div{
   margin: 0 auto;
   text-align: center;
+  background-color: white;
+  min-height: 600px;
   h1{
     padding: 25px 0;
   }

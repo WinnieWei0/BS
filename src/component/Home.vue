@@ -98,13 +98,18 @@
 .el-aside{
   height: 100%;
   text-align: left;
-  background-color: #d3dce6;
+  background-color: #eee;
   color: #333;
   float: left;
+  overflow: hidden;
+}
+.totalItem{
+  height: 100%;
+  background-color: white;
 }
 .el-main{
   width: 940px;
-  background-color: #e9eef3;
+  background-color: #eee;
   color: #333;
   float: right;
 }
@@ -143,16 +148,16 @@
 }
 .goodList{
   clear: both;
+  overflow: hidden;
+  background-color: white;
+  margin-top: 20px;
   .recommendOpus{
     width: 700px;
-    margin-top: 20px;
-    // background-color: red;
     float: left;
   }
   .recommendAuth{
     width: 230px;
     float: right;
-    // background-color: blueviolet;
     .newItem{
       position: relative;
       padding:5px 20px 10px 30px;
@@ -185,6 +190,10 @@
       .newTitle{
         float: left;
       }
+    }
+    .recommendTotal{
+      padding-left: 20px;
+      padding-top: 10px;
     }
   }
 }

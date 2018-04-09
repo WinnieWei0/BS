@@ -58,6 +58,8 @@
 .main>div{
   width: 1100px;
   margin: 0 auto;
+  background-color: white;
+  padding: 20px;
 }
 .item{
   border-bottom: 1px dashed #ccc;
