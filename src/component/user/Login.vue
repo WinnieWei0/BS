@@ -6,7 +6,7 @@
 				<el-input v-model="user.name"></el-input>
 			</el-form-item>
 			<el-form-item label="密码" prop="password">
-				<el-input v-model="user.password"></el-input>
+				<el-input type="password" v-model="user.password"></el-input>
 			</el-form-item>
 			<el-form-item>
 				<el-button type="primary" @click="loginForm('userForm')">登录</el-button>
@@ -69,6 +69,7 @@ export default {
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 0 20px #bbb;
+  background-color: white;
   h1 {
     height: 50px;
     text-align: center;

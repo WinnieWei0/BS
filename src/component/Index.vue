@@ -28,11 +28,16 @@ export default {
 <style>
 .el-header,
 .el-footer {
-  background-color: #eee;
+  background-color: white;
   color: #333;
   text-align: center;
 }
-
+.el-header{
+  border-bottom: 2px solid #acbcdc;
+}
+.el-footer{
+  border-top: 2px solid #acbcdc;
+}
 body > .el-container {
   margin-bottom: 40px;
 }

@@ -14,8 +14,6 @@ import workshare from '../component/worksShare.vue'
 import modifyComponent from '../component/user/Modify.vue'
 import userList from '../component/user/UserList.vue'
 
-
-
 export default new VueRouter({
   routes: [
     {path:'/',redirect:'/home'},
@@ -35,10 +33,6 @@ export default new VueRouter({
       ] },
       // 我的好友
       {name: 'friends', path: 'friends', component: friendsComponent}
-      // { name: 'friends', path: 'friends', component: friendsComponent,children:[
-      //   {name:'funs',path:'funs',component:funsComponent},
-      //   {name:'follow',path:'follow',component:followComponent}
-      // ] }
     ] },
     { name: 'login', path: '/user/login', component: loginComponent },
     { name: 'register', path: '/user/register', component: registerComponent }

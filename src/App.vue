@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <div class="down" @click="changeBackground">
-      <img src="../src/assets/images/down.png" alt="">
-    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -18,8 +15,9 @@ export default{
 </script>
 
 <style lang="less" scope>
-div#app{
-  background:#eee url('/src/assets/images/background1.jpg') no-repeat fixed center center;
+html,body{
+  height: 100%;
+  background-color: #eee;
 }
 .down{
   position: fixed;
