@@ -11,7 +11,7 @@
 				<el-button type="text" @click="btnReply(item.c_id)">回复</el-button>
 			</div>
 			<div class="reply" v-if="item.show">
-				<el-input v-model="item.content" type="textarea" autosize placeholder="回复:"></el-input>
+				<el-input v-model="item.content" type="textarea" :autosize="{minRows:3}" placeholder="回复:"></el-input>
 				<el-button type="primary" class="commitComment" @click="commitComment(item.c_id)">确定</el-button>
 			</div>
 		</div>
@@ -44,7 +44,8 @@
 								login_id:JSON.parse(sessionStorage.getItem('user')).user_id,
 								user_id:v.user_id,
 								cmDetail:v.content,
-								w_id:v.w_id
+								w_id:v.w_id,
+                isShow:0
 							}
 						}).then(res=>{
 							console.log(res.data)

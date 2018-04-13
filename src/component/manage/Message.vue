@@ -9,7 +9,7 @@
 				<el-button type="text" @click.native="btnReply(item.m_id)">回复</el-button>
 			</div>
 			<div class="reply" v-if="item.show">
-				<el-input v-model="item.content" type="textarea" autosize placeholder="回复："></el-input>
+				<el-input v-model="item.content" type="textarea" :autosize="{minRows:3}" placeholder="回复："></el-input>
 				<el-button type="primary" class="commitComment" @click="commitComment(item.m_id)">确定</el-button>
 			</div>
 		</div>
