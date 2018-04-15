@@ -59,9 +59,12 @@ export default {
       this.$axios.get("/message",{
 				params:{
 					id:JSON.parse(sessionStorage.getItem('user')).user_id
+					// id:{
+					// 	login:JSON.parse(sessionStorage.getItem('user')).user_id,
+					// 	user:this.$route.query.id
+					// }
 				}
 			}).then(res => {
-				console.log(res.data)
         this.message = res.data;
 				this.message.map(v=>{
 					v.content=''

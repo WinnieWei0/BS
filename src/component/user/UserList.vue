@@ -87,6 +87,7 @@ export default {
         });
     },
     addComment() {
+      console.log(this.$route.query.id)
       this.$axios
         .get("/addmsg", {
           params: {
@@ -98,8 +99,12 @@ export default {
           }
         })
         .then(res => {
-          if (res.data.code !== 200) {
-            this.message = true;
+          if (res.data.code === 200) {
+            this.message = false;
+            this.$message({
+              type:'success',
+              message:'留言成功'
+            })
           }
         });
     }

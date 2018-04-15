@@ -48,7 +48,6 @@
                 isShow:0
 							}
 						}).then(res=>{
-							console.log(res.data)
 							if(res.data.code===200){
 								v.show=false
 								this.getCommentList()
@@ -61,7 +60,6 @@
 			},
 			getCommentList(){
 				this.$axios.get('/comment').then(res=>{
-					console.log(res.data)
 					this.comment=res.data
 					this.comment.map(v=>{
 						v.content=''

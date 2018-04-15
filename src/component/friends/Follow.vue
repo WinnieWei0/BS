@@ -26,7 +26,6 @@
 							id:JSON.parse(sessionStorage.getItem('user')).user_id
 						}
 					}).then(res=>{
-							console.log(res.data)
 						this.follow=res.data
 					})
 				})

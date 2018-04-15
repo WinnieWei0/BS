@@ -48,7 +48,6 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.$axios.post('/register',{userName:this.user.name,userPwd:this.user.password}).then(res=>{
-							console.log(res)
 							if(res.data.code===200){
 								this.$message({message: res.data.msg,type: 'success'});
 								this.$router.push('/login')

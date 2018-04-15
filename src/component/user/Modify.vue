@@ -3,13 +3,13 @@
     <h1>修改密码</h1>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <el-form-item label="当前密码" prop="password">
-        <el-input v-model="ruleForm.password"></el-input>
+        <el-input type="password" v-model="ruleForm.password"></el-input>
       </el-form-item>
       <el-form-item label="新密码" prop="new">
-        <el-input v-model="ruleForm.new"></el-input>
+        <el-input type="password" v-model="ruleForm.new"></el-input>
       </el-form-item>
       <el-form-item label="确认密码" prop="confirm">
-        <el-input v-model="ruleForm.confirm"></el-input>
+        <el-input type="password" v-model="ruleForm.confirm"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
@@ -50,6 +50,7 @@
                 this.$axios.post('/changepwd',{password:this.ruleForm.new,id:JSON.parse(sessionStorage.getItem('user')).user_id}).then(res=>{
                   if(res.data.code===200){
                     this.$message({type:'success',message:res.data.msg})
+                    sessionStorage.removeItem('user')
                     this.$router.push('/user/login')
                   }else{
                     this.$message.error('密码修改失败')
@@ -77,6 +78,7 @@
   text-align: center;
   background-color: white;
   min-height: 600px;
+  padding: 0 20px;
   h1{
     padding: 25px 0;
   }

@@ -74,7 +74,6 @@
     methods:{
       getList(){
         this.$axios.get('/home').then(res=>{
-          console.log(res.data)
           this.list.newWork=res.data.newWork
           this.list.newWork.map(v=>{
             v.createTime=v.createTime.split('.')[0].replace('T',' ')

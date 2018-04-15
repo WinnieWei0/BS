@@ -67,7 +67,6 @@ export default {
         });
     },
     addComment() {
-      console.log(this.commentContent)
       if(!this.commentContent.trim()){
         return
       }
@@ -147,7 +146,6 @@ export default {
               }
             })
             .then(res => {
-              // console.log(res.data);
               if (res.data.code === 200) {
                 v.show = false;
                 this.getCommentList();
