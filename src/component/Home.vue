@@ -151,7 +151,7 @@
   background-color: white;
   margin-top: 20px;
   .recommendOpus{
-    width: 700px;
+    width: 670px;
     float: left;
   }
   .recommendAuth{
