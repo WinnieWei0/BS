@@ -9,7 +9,6 @@
         <div class="listName">
           <router-link :to="{path:'/workdetail',query:{id:item.w_id}}">{{item.workName}}</router-link>
         </div>
-        <div class="listDetail">{{item.workDetail}}</div>
       </div>
       <el-button class="btnDel" type="text" @click="delwork(item.w_id)">删除</el-button>
       <div class="listBottom">
@@ -48,6 +47,7 @@ export default {
           }
         })
         .then(res => {
+          console.log(res.data)
           this.dataList = res.data;
           this.dataList.map(v => {
             v.createTime = v.createTime.split(".")[0].replace("T", " ");

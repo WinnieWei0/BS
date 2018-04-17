@@ -26,7 +26,6 @@
           <div class="recommendTotal">
             <div class="newItem" v-for="item in list.goodWork" :key="item.w_id">
               <div class="newTitle"><router-link :to="{path:'/workdetail',query:{id:item.w_id}}">{{item.workName}}</router-link></div>
-              <div class="recommendDetail">{{item.workDetail}}</div>
               <div class="totalItem">
                 <div class="userMSG">
                   <!-- <img :src="item.src" alt=""> -->
@@ -74,6 +73,7 @@
     methods:{
       getList(){
         this.$axios.get('/home').then(res=>{
+          console.log(res.data)
           this.list.newWork=res.data.newWork
           this.list.newWork.map(v=>{
             v.createTime=v.createTime.split('.')[0].replace('T',' ')

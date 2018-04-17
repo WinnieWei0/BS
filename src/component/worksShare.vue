@@ -9,10 +9,22 @@
         <i v-if="!showThumb" class="fa fa-thumbs-up set"></i>
         <i class="fa fa-trash-o" @click="delwork(detailList.w_id)"></i>
       </div>
-      <div class="workDesc">
-        {{detailList.workDetail}}
-      </div>
+      <el-row>
+        <el-col :span="14">
+          <el-carousel trigger="click">
+            <el-carousel-item v-for="item in imgList" :key="item.uid">
+              <img :src="item.url" alt="">
+            </el-carousel-item>
+          </el-carousel>
+        </el-col>
+        <el-col :span="2" :offset="8">
+          <a :href="fileList[0].url" :download="fileList[0].name">
+            <el-button type="primary">下载源码</el-button>
+          </a>
+        </el-col>
+      </el-row>
       <div class="workCode">
+        <h4>使用说明及介绍</h4>
         <div id="editor" class="editor" v-if="false"></div>
         <div id="editor2" class="editor2"></div>
       </div>
@@ -51,7 +63,9 @@ export default {
     return {
       detailList: {},
       showThumb: true,
-      comment: []
+      comment: [],
+      imgList:[],
+      fileList:[]
     };
   },
   methods: {
@@ -63,7 +77,10 @@ export default {
           }
         })
         .then(res => {
+          // console.log(res.data)
           this.detailList = res.data[0];
+          this.imgList=JSON.parse(this.detailList.imgList)
+          this.fileList=JSON.parse(this.detailList.fileList)
         });
     },
     addComment() {
@@ -81,11 +98,7 @@ export default {
           }
         })
         .then(res => {
-          if (res.data.code === 200) {
             this.getCommentList();
-          } else {
-            this.$message.error(res.data);
-          }
         });
     },
     thumbs(count) {
@@ -103,7 +116,6 @@ export default {
         });
     },
     delwork(id) {
-      this.detailList = this.detailList.filter(v => v.w_id != id);
       this.$axios
         .get("/del", {
           params: {
@@ -157,7 +169,12 @@ export default {
       });
     },
     getCommentList() {
-      this.$axios.get("/onecomment").then(res => {
+      this.$axios.get("/onecomment",{
+        params:{
+          id:this.$route.query.id
+        }
+      }).then(res => {
+        console.log(res.data)
         this.comment = res.data;
         this.comment.map(v => {
           v.content = "";
@@ -193,8 +210,8 @@ export default {
   .workName {
     font-size: 20px;
     font-weight: bold;
-    height: 100px;
-    line-height: 100px;
+    height: 60px;
+    line-height: 60px;
   }
   .workDesc {
     text-indent: 2em;
@@ -203,12 +220,15 @@ export default {
   .workCode {
     background-color: white;
     padding-bottom: 10px;
+    h4{
+      padding: 10px;
+    }
   }
 }
 .praise {
   position: absolute;
   right: 30px;
-  top: 30px;
+  top: 15px;
   i {
     font-size: 30px;
     margin-right: 10px;
@@ -278,5 +298,12 @@ export default {
     float: right;
     margin-top: 10px;
   }
+}
+.el-carousel img{
+  width: 100%;
+  height: 100%;
+}
+.el-row{
+  margin: 20px 0;
 }
 </style>

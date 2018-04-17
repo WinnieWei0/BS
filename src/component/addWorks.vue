@@ -13,20 +13,21 @@
         <el-col :span="16">
           <div class="addImg">
             <h4>添加效果图</h4>
-            <el-upload :ref="img" action="http://127.0.0.1:3000/uploadimg" list-type="picture-card" :on-change="imgChange" :on-remove="imgRemove">
+            <el-upload ref="imgList" action="http://127.0.0.1:3000/uploadimg" :before-upload="beforeImgUpload" list-type="picture-card" :on-change="imgChange" :on-remove="imgRemove">
               <i class="el-icon-plus"></i>
             </el-upload>
           </div>
         </el-col>
         <el-col :span="6">
           <div class="addCode">
-            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" multiple :limit="1" :file-list="fileList">
+            <el-upload ref="fileList" class="upload-demo" action="http://127.0.0.1:3000/uploadfile" :on-change="fileChange" :limit="1">
               <el-button size="small" type="primary">上传源码</el-button>
             </el-upload>
           </div>
         </el-col>
       </el-row>
-      <div id="editor" class="editor" style="z-index: 0;position: relative;"></div>
+      <h4>使用说明及主要代码</h4>
+      <div id="editor" class="editor"></div>
       <div id="editor2" class="editor2"></div>
     </div>
   </div>
@@ -44,15 +45,11 @@ export default {
       userID: parseInt(JSON.parse(sessionStorage.getItem("user")).user_id),
       // 图片上传
       fileList: [],
-      imgList: [],
-      img: [],
-      file: []
+      imgList: []
     };
   },
   methods: {
     btnAddWork() {
-      console.log(this.imgList);
-      console.log(this.fileList);
       if (!this.userID) {
         this.$message.error({ message: "请登录" });
         this.$router.push("/user/login");
@@ -73,8 +70,8 @@ export default {
         this.$message({ message: "请填写标题", type: "warning" });
         return;
       }
-      if (this.addCode === "") {
-        this.$message({ message: "请添加代码", type: "warning" });
+      if(!this.imgList.length){
+        this.$message({ message: "请上传图片", type: "warning" });
         return;
       }
       this.$axios
@@ -94,18 +91,31 @@ export default {
               ":" +
               minu +
               ":" +
-              second
+              second,
+            imgList:JSON.stringify(this.imgList),
+            fileList:JSON.stringify(this.fileList)
           }
         })
         .then(res => {
           if (res.data.code === 200) {
             this.$message({ message: res.data.msg, type: "success" });
+            this.$router.push('/')
           }
         });
     },
-//     inputupload(param){
-// console.log(param)
-//     },
+    beforeImgUpload(file) {
+        const type = file.type.split('/')[1];
+        if(type){
+          if(/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(type)){
+          // if(!isJPG){
+          this.$message.error('请上传图片');
+          this.$refs.imgList.abort(file);
+        }
+        }else{
+          this.$message.error('请上传图片');
+          this.$refs.imgList.abort(file);
+        }
+    },
     imgRemove(file, fileList) {
       this.imgList = fileList;
     },
@@ -114,44 +124,7 @@ export default {
     },
     fileChange(file, fileList) {
       this.fileList = fileList;
-    },
-    uploadImg(param) {
-      // console.log(param)
-      console.log(param.file);
-      var url = "http://127.0.0.1:3000/uploadimg";
-        // var formData=new FormData();
-        // formData.append('img',param.file);
-        // formData.append('last',$('#img').attr('last'));
-        var xhr = new XMLHttpRequest();
-      xhr.open("post", url);
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      // xhr.send(JSON.stringify(param.file));
-      xhr.send(param.file);
-      // xhr.send(formData)
-      xhr.onload = function(e) {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          console.log(xhr.responseText);
-        }
-      };
-      // var url = "/uploadimg";
-      // // var formData=new FormData();
-      // // formData.append('img',param.file);
-      // // console.log(formData);
-      // // formData.append('last',$('#img').attr('last'));
-      // var xhr = new XMLHttpRequest();
-      // xhr.open("post", url);
-      // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      // xhr.send(param.file);
-      // // xhr.send(formData)
-      // xhr.onload = function(e) {
-      //   console.log(e);
-      //   if (xhr.readyState == 4 && xhr.status == 200) {
-      //     console.log(xhr.responseText);
-      //   }
-      //   // callback(JSON.parse(e.target.responseText));
-      // };
-    },
-    handlePreview() {}
+    }
   },
   mounted() {
     var editor = new E("#editor", "#editor2");
@@ -193,5 +166,8 @@ export default {
   > div {
     margin: 10px 0;
   }
+}
+h4{
+  padding: 10px;
 }
 </style>
