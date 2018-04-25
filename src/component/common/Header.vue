@@ -73,4 +73,7 @@ export default {
   line-height: 60px;
   font-size: 20px;
 }
+.el-menu :nth-child(2) a{
+  color: red;
+}
 </style>
